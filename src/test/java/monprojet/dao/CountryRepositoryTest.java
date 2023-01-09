@@ -43,4 +43,18 @@ public class CountryRepositoryTest {
         assertEquals(combienDePaysDansLeJeuDeTest, nombre, "On doit trouver 4 pays" );
     }
 
+    @Test
+    @Sql("test-data.sql")
+    void sommePopulationTest(){
+        log.info("On vérifie que la population de France est 12");
+        assertEquals(countryDAO.sommePopulation(1), 12, "Il y a 12 millions d'habitants");
+    }
+
+    @Test
+    @Sql("test-data.sql")
+    void paysPopTest(){
+        log.info("On vérifie qu'il y autant de lignes que de pays, donc 3");
+        assertEquals(3, countryDAO.listePopulation().size());
+    }
+
 }
